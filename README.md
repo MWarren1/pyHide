@@ -8,6 +8,10 @@ pyHide hides messages in png files and pyUnhide extracts the message from the pn
 - characters in message limited to (image_width-2)*image_height
 - only does bmp image files, would prefer to use png image files
 
+### Example of a image with hidden message
+
+![alt text](example.bmp "Example with a hidden message")
+
 ### py_hide
 ```
 usage: py_hide.py [-h] --input INPUT --message MESSAGE
