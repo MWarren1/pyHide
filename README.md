@@ -1,26 +1,24 @@
-# pyHide/pyUnhide
-###### Dependencies : Python 2.7
-###### By Redemption.Man
+# py_hide/py_unhide
 
 my first attempt at steganography, 2 scripts one to hide a message in a png file and one to extract the message.
 pyHide hides messages in png files and pyUnhide extracts the message from the png file
 
-###### pyHide
+###### py_hide
 ```
-usage: pyHide.py [-h] --input INPUT [--message MESSAGE]
+usage: py_hide.py [-h] --input INPUT --message MESSAGE
 
-pyHide - hides messages in a png file
+hides message in a bmp image
 
-optional arguments:
+options:
   -h, --help         show this help message and exit
-  --input INPUT      Input picture file
-  --message MESSAGE  message to hide must have "" (eg "hello world")
+  --input INPUT      Input bmp image file
+  --message MESSAGE  Message to hide in the bmp image
 ```  
-###### pyUnhide
+###### py_unhide
 ``` 
-usage: pyUnhide.py [-h] --input INPUT
+usage: py_unhide.py [-h] --input INPUT
 
-extracts messages from png file hidden by hide.py
+extracts messages from png file hidden by py_hide.py
 
 optional arguments:
   -h, --help     show this help message and exit
