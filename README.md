@@ -3,6 +3,11 @@
 my first attempt at steganography, 2 scripts one to hide a message in a png file and one to extract the message.
 pyHide hides messages in png files and pyUnhide extracts the message from the png file
 
+### Notes/Limitations
+- the get_next_3_pixels function could be improved on how it deals with the end of the width
+- characters in message limited to (image_width-2)*image_height
+- only does bmp image files, would prefer to use png image files
+
 ###### py_hide
 ```
 usage: py_hide.py [-h] --input INPUT --message MESSAGE
