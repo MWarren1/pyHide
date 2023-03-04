@@ -16,7 +16,12 @@ def get_next_3_pixels(current_width, current_height, image_width):
     pixel_3_width = current_width + 2
     pixel_3_height = current_height
 
-    return(pixel_1_width,pixel_1_height,pixel_2_width,pixel_2_height,pixel_3_width,pixel_3_height)
+    return(pixel_1_width,  \
+           pixel_1_height, \
+           pixel_2_width,  \
+           pixel_2_height, \
+           pixel_3_width,  \
+           pixel_3_height)
 
 ## function to check if pixel colour values are 255(max)
 def pixelcolourcheck(pixel):
@@ -71,9 +76,14 @@ def encryptletter(pixel1,pixel2,pixel3,char,last):
     return[pixel_1_after, pixel_2_after, pixel_3_after]
 
 ## CLI switches
-parser = argparse.ArgumentParser(prog='py_hide.py', description='Hides message in a bmp image')
-parser.add_argument('--input', required=True, help='Input bmp image file')
-parser.add_argument('--message', required=True, help='Message to hide in the bmp image')
+parser = argparse.ArgumentParser(prog="py_hide.py", \
+                                 description="Hides message in a bmp image")
+
+parser.add_argument("--input", required=True, \
+                    help="Input bmp image file")
+
+parser.add_argument("--message", required=True, \
+                    help="Message to hide in the bmp image")
 
 args = parser.parse_args()
 
@@ -83,7 +93,7 @@ message = args.message
 ## convert message to a binary list
 binary_message_list = []
 for letter in message:
-    binary_message_list.append(format(ord(letter), '08b'))
+    binary_message_list.append(format(ord(letter), "08b"))
 
 message_length = len(message)
 
@@ -96,7 +106,7 @@ output_image = input_image.copy()
 with output_image as im:
     # load pixels in to px
     px = im.load()
-print('Image size: ' + str(im.size))
+print("Image size: " + str(im.size))
 img_height = im.size[1]
 img_width = im.size[0]
 
@@ -114,7 +124,9 @@ for letter in binary_message_list:
     else:
         last_bit = "1"
 
-    p1_w, p1_h, p2_w, p2_h, p3_w, p3_h = get_next_3_pixels(current_w, current_h, img_width)
+    p1_w, p1_h, p2_w, p2_h, p3_w, p3_h = get_next_3_pixels(current_w, \
+                                                           current_h, \
+                                                           img_width)
 
     # getting pixel data
     p1_values = px[p1_w, p1_h]
@@ -122,7 +134,11 @@ for letter in binary_message_list:
     p3_values = px[p3_w, p3_h]
 
     # get new pixel values
-    p1_values_after,p2_values_after,p3_values_after = encryptletter(p1_values,p1_values,p1_values,letter,last_bit)
+    p1_values_after,p2_values_after,p3_values_after = encryptletter(p1_values, \
+                                                                    p1_values, \
+                                                                    p1_values, \
+                                                                    letter,    \
+                                                                    last_bit)
 
     # update pixel values
     output_image.putpixel((p1_w, p1_h), p1_values_after)
